@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<!--шапка сайта: название, библиотеки и т.д -->
+
+<head>
+    <title>Карта школ Раменское</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster-src.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!--стили -->
+    <style>
+        .layers3 {
+            background: #09ffad;
+            column-rule: #09ffad;
+        }
+        
+        .button_1 {
+            border: 2px solid #13140c;
+            background: #09ffad;
+            font-size: 14px;
+            padding: 5px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        
+        .leaflet-zoomControl {
+            background-color: #09ffad;
+        }
+        
+        .button_1:hover {
+            background: #09ffad93;
+        }
+        
+        body {
+            background-image: url(1626233037_12-kartinkin-com-p-belaya-kraska-tekstura-krasivo-12.jpg);
+            color: rgb(19, 12, 12);
+            margin: 0px;
+        }
+        
+        .leaflet-cluster-anim .leaflet-marker-icon,
+        .leaflet-cluster-anim .leaflet-marker-shadow {
+            -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+            -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+            -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+        }
+        
+        .leaflet-cluster-spider-leg {
+            /* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+            -webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+            -moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+            -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+            transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+        }
+        
+        .marker-cluster-small {
+            background-color: rgba(181, 226, 140, 0.6);
+        }
+        
+        .marker-cluster-small div {
+            background-color: rgba(110, 204, 57, 0.6);
+        }
+        
+        .marker-cluster-medium {
+            background-color: rgba(241, 211, 87, 0.6);
+        }
+        
+        .marker-cluster-medium div {
+            background-color: rgba(240, 194, 12, 0.6);
+        }
+        
+        .marker-cluster-large {
+            background-color: rgba(253, 156, 115, 0.6);
+        }
+        
+        .marker-cluster-large div {
+            background-color: rgba(241, 128, 23, 0.6);
+        }
+        /* IE 6-8 fallback colors */
+        
+        .leaflet-oldie .marker-cluster-small {
+            background-color: rgb(181, 226, 140);
+        }
+        
+        .leaflet-oldie .marker-cluster-small div {
+            background-color: rgb(110, 204, 57);
+        }
+        
+        .leaflet-oldie .marker-cluster-medium {
+            background-color: rgb(241, 211, 87);
+        }
+        
+        .leaflet-oldie .marker-cluster-medium div {
+            background-color: rgb(240, 194, 12);
+        }
+        
+        .leaflet-oldie .marker-cluster-large {
+            background-color: rgb(253, 156, 115);
+        }
+        
+        .leaflet-oldie .marker-cluster-large div {
+            background-color: rgb(241, 128, 23);
+        }
+        
+        .marker-cluster {
+            background-clip: padding-box;
+            border-radius: 20px;
+        }
+        
+        .marker-cluster div {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 5px;
+            text-align: center;
+            border-radius: 15px;
+            font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+        
+        .marker-cluster span {
+            line-height: 30px;
+        }
+    </style>
+    <link rel="shortcut icon" href="1179018.png" type="image/x-icon">
+</head>
+
+<body>
+    <!--шапка сайта название, библиотеки и т.д тело сайта(карта, текст, кнопка на страничке)-->
+    <div id="map" style="width:100%; height:900px;"></div>
+    <p align="center"><button onclick="openmarker(this)" id=text class="button_1" title="откроет маркер с вашим расположением"><img src="geometka-256x256.png" alt="PHOTO" height="30"
+		style="vertical-align: middle" ><font face = "cursive">Раменское</font></button></p>
+    <h1>
+        <font face="fantasy">Карта г. Раменское</font>
+    </h1>
+    <p color="white">
+        <font face="courier" size="4">Продукт для проекта "Анализ общеобразовательных уч. города Раменское на составленный сайт html"</font>
+    </p>
+    <p align="right" color="white">
+        <font face="cursive">Проект ученика 9"М" класса, Панкова Георгия</font>
+    </p>
+    <p color="white" align="right">
+        <font face="cursive">Создан 2021-2022 годах.</font>
+    </p>
+    <!--описание функции кнопки-->
+    <script>
+        function interval() {
+            setTimeout(function() {
+                markerI.closePopup();
+            }, 2500);
+        }
+
+        function interval1() {
+            setTimeout(function() {
+                markerI.remove();
+            }, 5000);
+        }
+
+
+        function openmarker() {
+            map.setView([55.56398440318658, 38.19972654387523], 14);
+            markerI.addTo(map).openPopup();
+            interval();
+            interval1();
+        }
+        var text = document.getElementById('text');;
+    </script>
+    <!--js файл со всеми объектами карты и функциями-->
+    <script src="all_schools_markers_and_circles_1.js"></script>
+    <!--работа со слоями карты-->
+    <script>
+        //создание метки я
+        var IiconOptions = {
+            iconUrl: 'geometka-256x256.png',
+            iconSize: [40, 40]
+        }
+        var Iicon = L.icon(IiconOptions);
+        var markerIOptions = {
+            title: "Я",
+            clickable: true,
+            draggable: false,
+            riseOnHover: true,
+            icon: Iicon
+        }
+        var markerI = L.marker([55.5650841462759, 38.22562614947066], markerIOptions);
+
+        markerI.addTo(map);
+        markerI.bindPopup("Раменское");
+        setTimeout(function() {
+            markerI.closePopup();
+        }, 5000);
+        //подключение слоев к чекбоксу
+        var mixed = {
+            "Метка Раменское": markerI,
+            "Зоны пешей доступности": circles_all
+
+        };
+        var mixed2 = {
+            "Основной слой карты": map1,
+            "Вид со спутника": map2,
+            "Ночная карта": map3
+        }
+        var mixed3 = {
+            "Все школы": markers_schools,
+            "Переполненные школы": markers_schools_false,
+            "Непереполненные школы": markers_schools_true,
+            "Без школ": markers_schools_without
+        }
+        var layers1 = L.control.layers(mixed2, mixed, {
+            position: 'bottomright',
+            collapsed: false
+        })
+        var layers3 = L.control.layers(mixed3, null, {
+            collapsed: false,
+            position: 'bottomright',
+            hideSingleBase: true
+        })
+        layers3.addTo(map);
+        layers1.addTo(map);
+    </script>
+
+</body>
+
+</html>
