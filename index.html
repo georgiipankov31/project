@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+   <!--шапка сайта: название, библиотеки и т.д -->
+   <head>
+      <title>Карта школ Раменского округа</title>
+      <link rel="shortcut icon" href="1179018.png" type="image/x-icon">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+      <!--стили -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+      <link href="project_style.css" rel="stylesheet">
+   </head>
+   <body>
+      <!--шапка сайта название, библиотеки и т.д тело сайта(карта, текст, кнопка на страничке)-->
+      <div id="map"></div>
+      <p align="center"><button onclick="openmarker(this)" id=text class="button_1" title="откроет маркер с вашим расположением"><img src="geometka-256x256.png" alt="PHOTO" height="30"
+         style="vertical-align: middle" ><font face = "cursive">Раменское</font></button></p>
+      <h1>
+         <font face="arial">Карта Раменского городского округа</font>
+      </h1>
+      <p color="white">
+         <font face="Lobster" size="4">Продукт для проекта "Анализ общеобразовательных учреждений Раменского городского округа на составленном сайте html"</font>
+      </p>
+      <p align="right" color="white">
+         <font face="cursive">Проект ученика 9"М" класса, Панкова Георгия</font>
+      </p>
+      <p color="white" align="right">
+         <font face="cursive">МОУ СОШ Раменская №6</font>
+      </p>
+      <p color="white" align="right">
+         <font face="cursive">Создан 2021-2022 годах.</font>
+      </p>
+      <p>
+      <h2 font face="fantasy">
+         <font face="fantasy">Иконка школы</font>
+      </h2>
+      <br>
+      <p face="courier">
+         <font face="courier">Обеспеченность школы - параметр, соответсвующий разнице фактической наполняемости учениками из проектной наполняемости учениками.</font>
+      </p>
+      <p face="courier">
+         <font face="courier">Так: школы, где эта разница больше или равна нулю - обеспеченные школы, меньше нуля - необеспеченные. Школы, по которым инф-ция отсутсвует, не относятся ни к тем, ни к другим школам, однако, в слое "Все школы" присутсвуют.</font>
+      </p>
+      <p face="courier">
+         <font face="courier">Обеспеченные школы помечены зеленым цветом, необеспеченные - красным. Школы без инф-ции - голубым. Фото ниже:</font>
+      </p>
+      </p>
+      <div class=" wrapper ">
+      <div class="slider ">
+         <div class="slider__item ">
+            <img src="my-icon-false.png " alt="PHOTO ">
+         </div>
+         <div class="slider__item ">
+            <img src="my-icon-true.png " alt="PHOTO ">
+         </div>
+         <div class="slider__item ">
+            <img src="my-icon.png " alt="PHOTO ">
+         </div>
+      </div>
+      <h2>
+         <font face="fantasy">Зоны пешей доступности</font>
+      </h2>
+      <p face="courier">
+         <font face="courier">Зона пешей доступности - окружность радиусом 500 метров, центром которой является школа.</font>
+      </p>
+      <p>
+         <font face="courier">Расстоение 500 метров взято согласно санпину. Прочитать о нем можно <a target="blank" href="https://zt-gazeta.ru/radius-dostupnosti-shkol-i-detskih-sadov/"> ЗДЕСЬ.</a></face>
+      </p>
+      <p>
+         <face="courier"></face>Фото одного из:
+      </p>
+      <p align="center">
+         <a target="blank" href="https://zt-gazeta.ru/radius-dostupnosti-shkol-i-detskih-sadov/"><img class="radius" src="radius.jpg" alt="PHOTO_radius"></a>
+      </p>
+      <h2>
+         <font face="fantasy">Маркер Раменское</font>
+      </h2>
+      <p>
+         <font face="courier">Маркер представляет собой слой из 1 точки, за ее координаты взяты координаты станции "Раменское". Его цель: помочь пользователю не потеряться на карте.
+      </p>
+      <p>
+         <font face="courier">Чуть ниже карты расположена кнопка, которая заставит карту выставить 14 уровень зума(приближения) с координатами маркера. После чего (через 5 секунд) маркер уничтожится. Фото кнопки:
+      </p>
+      <p align="center">
+         <a target="blank" href="https://ru.wikipedia.org/wiki/Раменское_(станция)"><img class="radius" src="marker.jpg" alt="PHOTO_marker"></a>
+      </p>
+      <h2>
+         <font face="fantasy">Параметры, выставляемые пользователем</font>
+      </h2>
+      <p>
+         <font face="courier">Карта оснащена рядом функций, которые не замешаны в анализ, однако, помогают пользователю настроить карту так, как удобно ему.
+      </p>
+      <br>
+      <p>
+         <font face="courier">
+      <ul>
+      <li>Контроль масштаба</li>
+      <li>Контроль полного экрана</li>
+      <li>Уровень зума.</li>
+      <li>Поиск объектов на карте</li>
+      <li>Тип карты(классика, спутник, ночной)</li>
+      </ul>
+      </font>
+      </p>
+      <div class="wrapper ">
+      <div class="slider">
+         <div class="slider__item ">
+            <img src="pic2.jpg" alt="PHOTO ">
+         </div>
+         <div class="slider__item ">
+            <img src="pic1.jpg" alt="PHOTO ">
+         </div>
+         <div class="slider__item ">
+            <img src="pic3.jpg" alt="PHOTO ">
+         </div>
+         <div class="slider__item ">
+            <img src="pic4.jpg" alt="PHOTO ">
+         </div>
+      </div>
+      <p>
+      <p align="right">Исходные файлы проекта:</p>
+      <p>Для связи:</p>
+      <a href="https://mail.yandex.ru">gosha@vvpankov.ru</a>
+      <a align="right" href="#"><img align="right" height="80px" src="1179018.png" alt="logo_PHOTO"></a>
+      <a align="right" href="https://github.com/georgiipankov31/project"><img align="right" height="100px" src="kisspng-github-logo-repository-computer-icons-5afa376c51ca94.387166531526347628335.png" alt="github_PHOTO"></a>
+      <a align="right" href="https://disk.yandex.ru/d/6DUXW96G2W6ggg"><img align="right" height="100px" src="kisspng-yandex-disk-cloud-storage-cloud-computing-google-d-apk-yang-terkait-yandex-key-your-passwords-app-2-5bf01fbddef345.6948040715424634219132.png" alt="YANDEX_PHOTO"></a> <br>
+      </p>
+      <!--подключение всего необходимого-->
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+      <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster-src.js"></script>
+      <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+      <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+      <!--описание функции кнопки-->
+      <script src="mobile_or_PC.js"></script>
+      <!--js файл со всеми объектами карты и функциями-->
+      <script src="all_options_of_schools.js "></script>
+      <!--работа со слоями карты-->
+      <script src="schools_circles_put.js"></script>
+      <!--слайдер фото-->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
+      <script src="slick.min.js "></script>
+      <script>
+         $(document).ready(function() {
+             $('.slider').slick({
+                 dots: true,
+                 adaptiveHeight: true,
+                 centerMode: true,
+                 slidesToShow: 1
+             });
+         });
+      </script>
+   </body>
+</html>

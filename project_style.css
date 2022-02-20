@@ -1,0 +1,202 @@
+.mapMobile{
+    height: 800px;
+    width: 100%;
+}
+.mapPC{
+    height: 500px;
+    width: 100%;
+}
+body {
+    background-color: rgb(66, 63, 63);
+}
+
+.slider {
+    position: relative;
+    padding: 60px 60px;
+}
+
+.radius {
+    margin-bottom: 60px;
+    border-radius: 8px;
+    border: 3px solid #0000008c;
+    position: sticky
+}
+
+.slick-track {
+    display: flex;
+    align-items: flex-start;
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    margin: -30px 0px 0px 0px;
+    z-index: 10;
+    font-size: 0;
+    width: 30px;
+    height: 50px;
+}
+
+.slick-prev.slick-arrow {
+    left: 0;
+    background: url('left.svg') 0 0 / 100% no-repeat;
+    border: none;
+}
+
+.slick-next.slick-arrow {
+    right: 0;
+    background: url('right.svg') 0 0 / 100% no-repeat;
+    border: none;
+}
+
+.slick-list {
+    overflow: hidden;
+}
+
+.slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slick-dots li {
+    list-style: none;
+}
+
+.slick-dots button {
+    font-size: 0;
+    border: none;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(141, 137, 137);
+    border-radius: 50%;
+    margin: 0px 10px;
+}
+
+.slick-dots li.slick-active button {
+    background-color: rgb(12, 9, 9);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.slider__item {
+    text-align: center;
+}
+
+.slider__item img {
+    width: 240px;
+}
+
+.layers3 {
+    background: #09ffad;
+    column-rule: #09ffad;
+}
+
+.button_1 {
+    border: 2px solid #13140c;
+    background: #09ffad;
+    font-size: 14px;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.leaflet-zoomControl {
+    background-color: #09ffad;
+}
+
+.button_1:hover {
+    background: #09ffad93;
+}
+.button_1:checked{
+    background: #09ffad33;
+}
+
+body {
+    background-image: url(phone.jpg);
+    color: rgb(19, 12, 12);
+    margin: 0px;
+}
+
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+    -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+    -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+    -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+.leaflet-cluster-spider-leg {
+    /* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+    -webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+    -moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+    -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+    transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+
+.marker-cluster-small {
+    background-color: rgba(181, 226, 140, 0.6);
+}
+
+.marker-cluster-small div {
+    background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-medium {
+    background-color: rgba(241, 211, 87, 0.6);
+}
+
+.marker-cluster-medium div {
+    background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-large {
+    background-color: rgba(253, 156, 115, 0.6);
+}
+
+.marker-cluster-large div {
+    background-color: rgba(241, 128, 23, 0.6);
+}
+/* IE 6-8 fallback colors */
+
+.leaflet-oldie .marker-cluster-small {
+    background-color: rgb(181, 226, 140);
+}
+
+.leaflet-oldie .marker-cluster-small div {
+    background-color: rgb(110, 204, 57);
+}
+
+.leaflet-oldie .marker-cluster-medium {
+    background-color: rgb(241, 211, 87);
+}
+
+.leaflet-oldie .marker-cluster-medium div {
+    background-color: rgb(240, 194, 12);
+}
+
+.leaflet-oldie .marker-cluster-large {
+    background-color: rgb(253, 156, 115);
+}
+
+.leaflet-oldie .marker-cluster-large div {
+    background-color: rgb(241, 128, 23);
+}
+
+.marker-cluster {
+    background-clip: padding-box;
+    border-radius: 20px;
+}
+
+.marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.marker-cluster span {
+    line-height: 30px;
+}
